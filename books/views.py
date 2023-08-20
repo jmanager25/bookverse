@@ -44,6 +44,7 @@ class BookDetail(APIView):
     def get_book(self, pk):
         try:
             book = Book.objects.get(pk=pk)
+            self.check_object_permissions(self.request, book)
             return book
         except Book.DoesNotExist:
             raise Http404
