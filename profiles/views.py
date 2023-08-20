@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework import status
 from .models import Profile
 from .serializers import ProfileSerializer
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from bookverse_api.permissions import IsOwnerOrReadOnly
 
 

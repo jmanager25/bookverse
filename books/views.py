@@ -4,19 +4,34 @@ from .models import Book
 from .serializers import BookSerializer
 from django.http import Http404
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from bookverse_api.permissions import IsOwnerOrReadOnly
 
 
 class BookList(APIView):
     """
-    Retrieves the book's list
+    Retrieves the book's list 
     """
+    serializer_class = BookSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(
             books, many=True, context={'request': request})
         return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = BookSerializer(
+            data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors, status=HTTP_400_BAD_REQUEST
+        )
+
 
 class BookDetail(APIView):
     """
