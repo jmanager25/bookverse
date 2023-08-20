@@ -36,6 +36,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-jmanager25-bookverse-2qp4v80fjjp.ws-eu104.gitpod.io',
+    'https://3000-jmanager25-bookverse-2qp4v80fjjp.ws-eu104.gitpod.io/',
 ]
 
 
