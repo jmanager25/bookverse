@@ -7,12 +7,14 @@ const NavBar = () => {
   return (
     <Navbar expand="md" fixed="top" className={styles.NavBar}>
         <Container fluid>
-          <Navbar.Brand href="#">BookVerse</Navbar.Brand>
+          <NavLink to="/">
+            <Navbar.Brand>BookVerse</Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
-                <Nav.Link href="#action1"><i class="fa-solid fa-house"></i>Home</Nav.Link>
-                <Nav.Link href="#action2"><i class="fa-solid fa-book"></i>My Books</Nav.Link>
+                <NavLink to="/"><i class="fa-solid fa-house"></i>Home</NavLink>
+                <NavLink to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
                 <Form className="d-flex">
                 <Form.Control
                     type="search"
@@ -27,8 +29,8 @@ const NavBar = () => {
             <Nav
               className="ml-auto"
             >
-              <Nav.Link href="#action1"><i class="fa-solid fa-right-to-bracket"></i>Sign in</Nav.Link>
-              <Nav.Link href="#action2"><i class="fa-solid fa-user-plus"></i>Sign up</Nav.Link>
+              <NavLink to="/signin"><i class="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>
+              <NavLink to="/signup"><i class="fa-solid fa-user-plus"></i>Sign up</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
