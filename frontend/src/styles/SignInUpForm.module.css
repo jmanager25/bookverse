@@ -1,0 +1,22 @@
+.Input {
+    margin: 10px;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Form {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.Text {
+    text-align: center;
+    font-size: 15px;
+}
