@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 const SignUpForm = () => {
-    
+
    const [signUpData, setSignUpData] = useState({
     username: "",
     email: "",
@@ -29,7 +29,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     try {
-      await axios.post('/dj-rest-auth/registration/', signUpData);
+      await axios.post('api/dj-rest-auth/registration/', signUpData);
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data)  ;
@@ -72,7 +72,7 @@ const SignUpForm = () => {
                     <Form.Control 
                     type="password" 
                     placeholder="Password" 
-                    name="password1" c
+                    name="password1" 
                     className={styles.Input} 
                     value={password1} 
                     onChange={handleChange}/>
@@ -101,7 +101,6 @@ const SignUpForm = () => {
             </Form>
         </Container>
     )
-
-};
+}
 
 export default SignUpForm
