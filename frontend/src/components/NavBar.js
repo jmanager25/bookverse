@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Form, Navbar, Container, Button, Nav} from "react-bootstrap";
 import styles from "../styles/NavBar.module.css"
 import {NavLink} from "react-router-dom";
+import { CurrentUserContext } from '../App';
 
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+  const loggedInIcons = <>{currentUser?.username}</>
+  const loggedOutIcons = (
+    <> 
+      <Nav className="ml-auto">
+        <NavLink to="/signin"><i class="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>
+        <NavLink to="/signup"><i class="fa-solid fa-user-plus"></i>Sign up</NavLink>
+      </Nav>
+    </>
+  )
   return (
     <Navbar expand="md" fixed="top" className={styles.NavBar}>
         <Container fluid>
@@ -27,11 +38,8 @@ const NavBar = () => {
                 <i class="fa-solid fa-magnifying-glass"></i>
                 </Form>
             </Nav>
-            <Nav
-              className="ml-auto"
-            >
-              <NavLink to="/signin"><i class="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>
-              <NavLink to="/signup"><i class="fa-solid fa-user-plus"></i>Sign up</NavLink>
+            <Nav className="ml-auto">
+              {currentUser ? loggedInIcons : loggedOutIcons}
             </Nav>
           </Navbar.Collapse>
         </Container>
