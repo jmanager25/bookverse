@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Configures authentication classes for the DRF.
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
 }
 
@@ -37,7 +37,7 @@ REST_FRAMEWORK = {
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e$+a84g^xcmd-g*f%l9q@5*qpewgwv@%1o^j)r(5q$g1b(vo9f'
+SECRET_KEY = os.getenv('SECRET_KEY') #noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
