@@ -13,7 +13,7 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("dj-rest-auth/logout/");
+      await axios.post("api/dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (err) {
       console.log(err);
@@ -23,7 +23,7 @@ const NavBar = () => {
   const loggedInIcons = <>
     <NavLink to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
     <NavLink to="/" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i>Sign out</NavLink>
-    <NavLink to="{`/profiles/{currentUser?.profile_id}`}"><Avatar src={currentUser?.profile_image} text="Profile" height={40} /></NavLink>
+    <NavLink to={`/profiles/${currentUser?.profile_id}`}><Avatar src={currentUser?.profile_image} text="Profile" height={40} /></NavLink>
   </>;
   const loggedOutIcons = (
     <> 

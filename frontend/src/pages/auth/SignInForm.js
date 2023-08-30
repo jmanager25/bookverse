@@ -20,7 +20,6 @@ const SignInForm = () => {
 
    const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const {data} = await axios.post("api/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user)
