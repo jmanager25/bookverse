@@ -2,13 +2,29 @@ import React from 'react';
 import { Form, Navbar, Container, Button, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from '../context/CurrentUserContext';
+import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext';
+import Avatar from './Avatar';
+import axios from 'axios';
 
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const loggedInIcons = <>
+    <NavLink to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
+    <NavLink to="/" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i>Sign out</NavLink>
+    <NavLink to="{`/profiles/{currentUser?.profile_id}`}"><Avatar src={currentUser?.profile_image} text="Profile" height={40} /></NavLink>
+  </>;
   const loggedOutIcons = (
     <> 
       <Nav className="ml-auto">
@@ -27,7 +43,6 @@ const NavBar = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
                 <NavLink to="/"><i class="fa-solid fa-house"></i>Home</NavLink>
-                <NavLink to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
                 <Form className="d-flex">
                 <Form.Control
                     type="search"
