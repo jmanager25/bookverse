@@ -27,4 +27,4 @@ class Review(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"Review for {self.book.title} by {self.owner.username}"
+        return self.review_text
