@@ -6,7 +6,7 @@ from .serializers import LikeSerializer
 
 class LikeListView(generics.ListCreateAPIView):
     """
-    List and create Liskes when logged in
+    List and create Likes when logged in
     """
     queryset = Like.objects.all()
     serializer_class = LikeSerializer

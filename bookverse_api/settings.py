@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'reviews',
     'comments',
     'likes',
+    'saved_books',
 ]
 
 SITE_ID = 1
