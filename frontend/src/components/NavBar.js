@@ -22,15 +22,22 @@ const NavBar = () => {
   };
 
   const loggedInIcons = <>
-    <NavLink to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
-    <NavLink to="/" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i>Sign out</NavLink>
-    <NavLink to={`/profiles/${currentUser?.profile_id}`}><Avatar src={currentUser?.profile_image} text="Profile" height={40} /></NavLink>
-  </>;
+        <NavLink exact activeClassName={styles.Active} to="/"><i class="fa-solid fa-house"></i>Home</NavLink>
+        <NavLink activeClassName={styles.Active} to="/mybooks"><i class="fa-solid fa-book"></i>My Books</NavLink>
+        <NavLink 
+        activeClassName={styles.Active} 
+        to={`/profiles/${currentUser?.profile_id}`}><Avatar src={currentUser?.profile_image} 
+        text='Profile'
+        height={40} />
+        </NavLink>
+        <NavLink to="/" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i>Sign out</NavLink>
+      </>
+
   const loggedOutIcons = (
     <> 
       <Nav className="ml-auto">
-        <NavLink to="/signin"><i class="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>
-        <NavLink to="/signup"><i class="fa-solid fa-user-plus"></i>Sign up</NavLink>
+        <NavLink activeClassName={styles.Active} to="/signin"><i class="fa-solid fa-right-to-bracket"></i>Sign in</NavLink>
+        <NavLink activeClassName={styles.Active} to="/signup"><i class="fa-solid fa-user-plus"></i>Sign up</NavLink>
       </Nav>
     </>
   )
@@ -45,7 +52,6 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
-                <NavLink to="/"><i class="fa-solid fa-house"></i>Home</NavLink>
                 <Form className="d-flex">
                 <Form.Control
                     type="search"
@@ -54,10 +60,9 @@ const NavBar = () => {
                     aria-label="Search"
                 />
                 <Button variant="outline-success">Search</Button>
-                <i class="fa-solid fa-magnifying-glass"></i>
                 </Form>
             </Nav>
-            <Nav className="ml-auto">
+            <Nav>
               {currentUser ? loggedInIcons : loggedOutIcons}
             </Nav>
           </Navbar.Collapse>

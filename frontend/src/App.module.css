@@ -6,3 +6,33 @@
 .Main {
     padding-top: 80px;
 }
+
+a {
+    color: #121420;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: 500;
+    transition: color ease-in-out 0.3s;
+  }
+  
+a:hover {
+    color: #3066BE;
+}
+
+a:hover i {
+    color: #3066BE;
+    transition: color ease-in-out 0.3s;
+  }
+  
+i {
+    color: #121420;
+    font-size: 1.6rem;
+    padding: 6px;
+    vertical-align: middle;
+  }
+  
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #3066BE;
+  }
