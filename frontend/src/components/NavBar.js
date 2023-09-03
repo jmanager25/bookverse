@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Navbar, Container, Button, Nav } from "react-bootstrap";
+import logo from '../assets/logo.png'
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext';
@@ -37,7 +38,9 @@ const NavBar = () => {
     <Navbar expand="md" fixed="top" className={styles.NavBar}>
         <Container fluid>
           <NavLink to="/">
-            <Navbar.Brand>BookVerse</Navbar.Brand>
+            <Navbar.Brand>
+              <img src={logo} alt='logo' height='60' />
+            </Navbar.Brand>
           </NavLink>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
