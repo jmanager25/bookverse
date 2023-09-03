@@ -8,7 +8,7 @@
 }
 
 a {
-    color: #121420;
+    color: #6D9DC5;
     text-decoration: none;
     margin: 0 5px;
     font-weight: 500;
@@ -16,16 +16,16 @@ a {
   }
   
 a:hover {
-    color: #3066BE;
+    color: #121420;
 }
 
 a:hover i {
-    color: #3066BE;
+    color: #121420;
     transition: color ease-in-out 0.3s;
   }
   
 i {
-    color: #121420;
+    color: #6D9DC5;
     font-size: 1.6rem;
     padding: 6px;
     vertical-align: middle;
@@ -34,5 +34,5 @@ i {
 i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #3066BE;
+    color: #6D9DC5;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Navbar, Container, Button, Nav } from "react-bootstrap";
 import logo from '../assets/logo.png'
 import styles from "../styles/NavBar.module.css"
+import buttonstyles from "../styles/Button.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext';
 import Avatar from './Avatar';
@@ -59,7 +60,7 @@ const NavBar = () => {
                     className="me-2"
                     aria-label="Search"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button className={buttonstyles.Button}>Search</Button>
                 </Form>
             </Nav>
             <Nav>

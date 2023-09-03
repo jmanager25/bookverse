@@ -51,7 +51,7 @@ const SignInForm = () => {
                     onChange={handleChange} />
                 </Form.Group>
                 {errors.username?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <Form.Group controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
@@ -64,11 +64,13 @@ const SignInForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                 {errors.password?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
-                <Button type="submit" className={buttonstyles.Button}>Sign In</Button>
+                <div className={buttonstyles.CenterButton}>
+                    <Button type="submit" className={buttonstyles.Button}>Sign In</Button>
+                </div>
                 {errors.non_field_errors?.map((message, idx) =>
-                    <Alert variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <p className={`${styles.Text} mt-3`}>Don't have an account?<Link to="/signup">Register here</Link></p>
             </Form>

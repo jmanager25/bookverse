@@ -1,5 +1,11 @@
 .Input {
-    margin: 10px;
+    background-color: #ffffff;
+    border: 1px solid #6D9DC5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .Container {
@@ -12,11 +18,16 @@
 .Form {
     width: 400px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #6D9DC5;
     border-radius: 5px;
 }
 
 .Text {
     text-align: center;
+    font-size: 15px;
+}
+
+.Alert {
+    margin-top: 5px;
     font-size: 15px;
 }
