@@ -39,7 +39,7 @@ class BookDetail(APIView):
     permissions.
     """
     serializer_class = BookSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_book(self, pk):
         try:

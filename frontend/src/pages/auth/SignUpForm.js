@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import buttonstyles from "../../styles/Button.module.css";
+import appstyles from "../../App.module.css"
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import axios from "axios";
 
@@ -50,7 +51,7 @@ const SignUpForm = () => {
                     onChange={handleChange} />
                 </Form.Group>
                 {errors.username?.map((message, idx) =>
-                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <Form.Group controlId="password1">
                     <Form.Label className="d-none">Password</Form.Label>
@@ -63,7 +64,7 @@ const SignUpForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                 {errors.password1?.map((message, idx) =>
-                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <Form.Group controlId="password2">
                     <Form.Label className="d-none">Confirm Password</Form.Label>
@@ -76,13 +77,13 @@ const SignUpForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                 {errors.password2?.map((message, idx) =>
-                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <div className={buttonstyles.CenterButton}>
                     <Button type="submit" className={buttonstyles.Button}>Sign Up</Button>
                 </div>
                 {errors.non_field_errors?.map((message, idx) =>
-                    <Alert className={styles.Alert} variant="warning" key={idx}>{message}</Alert>
+                    <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
                 )}
                 <p className={`${styles.Text} mt-3`}>Already have an account?<Link to="/signin">login here</Link></p>
             </Form>

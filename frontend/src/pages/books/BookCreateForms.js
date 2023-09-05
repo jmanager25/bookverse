@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Alert} from 'react-bootstrap';
 import styles from '../../styles/BookCreatEditForm.module.css';
 import buttonstyles from '../../styles/Button.module.css';
+import appstyles from "../../App.module.css"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 
@@ -50,8 +51,8 @@ function BookCreateForms() {
         formData.append('image', imageInput.current.files[0]);
 
         try {
-          const {data} = await axiosReq.post('/books/', formData);
-          history.push(`/books/${data.id}`)
+          const {data} = await axiosReq.post('/api/books/', formData);
+          history.push(`/api/books/${data.id}`)
         } catch(err){
           console.log(err)
           if (err.response?.status !== 401){
@@ -72,6 +73,9 @@ function BookCreateForms() {
                 onChange={handleChange}
             />
         </Form.Group>
+        {errors?.title?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+        )}
         <Form.Group controlId='author'>
             <Form.Label className={styles.FormLabel}>Author</Form.Label>
             <Form.Control
@@ -82,6 +86,9 @@ function BookCreateForms() {
                 onChange={handleChange}
             />
         </Form.Group>
+        {errors?.author?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+        )}
         <Form.Group controlId='genre'>
             <Form.Label className={styles.FormLabel}>Genre</Form.Label>
             <Form.Control
@@ -92,6 +99,9 @@ function BookCreateForms() {
                 onChange={handleChange}
             />
         </Form.Group>
+        {errors?.genre?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+        )}
         <Form.Group controlId='summary'>
             <Form.Label className={styles.FormLabel}>Summary</Form.Label>
             <Form.Control
@@ -103,6 +113,9 @@ function BookCreateForms() {
                 onChange={handleChange}
             />
         </Form.Group>
+        {errors?.summary?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+        )}
         <Form.Group controlId="image">
             <Form.Label className={styles.FormLabel}>Cover Image</Form.Label>
             <Form.File
@@ -112,8 +125,11 @@ function BookCreateForms() {
                 ref={imageInput}
             />
         </Form.Group>
+        {errors?.image?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+        )}
         <div className={buttonstyles.CenterButton}>
-            <Button className={buttonstyles.Danger}>
+            <Button className={buttonstyles.Danger} onClick={() => history.goBack()}>
                 Cancel
             </Button>
             <Button className={buttonstyles.Button} type='Submit'>

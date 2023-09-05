@@ -42,3 +42,8 @@ i:hover {
     max-width: 100%;
     object-fit: contain;
   }
+
+.Alert {
+    margin-top: 5px;
+    font-size: 15px;
+}
