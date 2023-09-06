@@ -8,6 +8,7 @@ import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext
 import Avatar from './Avatar';
 import axios from 'axios';
 import useBurgerMenu from '../hooks/useBurgerMenu';
+import { removeTokenTimestamp } from "../utils/utils";
 
 
 const NavBar = () => {
@@ -18,8 +19,9 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("api/dj-rest-auth/logout/");
+      await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }

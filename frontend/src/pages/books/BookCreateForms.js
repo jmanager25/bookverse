@@ -51,8 +51,8 @@ function BookCreateForms() {
         formData.append('image', imageInput.current.files[0]);
 
         try {
-          const {data} = await axiosReq.post('/api/books/', formData);
-          history.push(`/api/books/${data.id}`)
+          const {data} = await axiosReq.post('/books/', formData);
+          history.push(`/books/${data.id}`)
         } catch(err){
           console.log(err)
           if (err.response?.status !== 401){

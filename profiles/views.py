@@ -24,7 +24,7 @@ class ProfileDetail(APIView):
     Retrieves, updates and deletes a profile.
     """
     serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_profile(self, pk):
         try:
