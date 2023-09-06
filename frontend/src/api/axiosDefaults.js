@@ -7,7 +7,7 @@
 
 import axios from "axios";
 
-axios.defaults.baseURL = "/api";
+axios.defaults.baseURL = "https://bookverse-b1b0793c7567.herokuapp.com/";
 axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
 axios.defaults.withCredentials = true;
 
