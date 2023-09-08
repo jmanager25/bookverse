@@ -7,6 +7,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import './api/axiosDefaults'
 import BookCreateForms from "./pages/books/BookCreateForms";
 import BookPage from "./pages/books/BookPage";
+import Books from "./components/Books";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home page</h1>} />
+          <Route exact path="/" render={() => <Books />} />
           <Route exact path="/mybooks" render={() => <h1>My Books</h1>} />
           <Route exact path="/signin" render={() => <SignInForm /> } />
           <Route exact path="/signup" render={() => <SignUpForm /> } />
