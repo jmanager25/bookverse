@@ -8,11 +8,13 @@ import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext
 import Avatar from './Avatar';
 import axios from 'axios';
 import useBurgerMenu from '../hooks/useBurgerMenu';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const history = useHistory();
 
   const {expanded, setExpanded, ref} = useBurgerMenu();
 
@@ -20,6 +22,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      history.push('/signin')
     } catch (err) {
       console.log(err);
     }

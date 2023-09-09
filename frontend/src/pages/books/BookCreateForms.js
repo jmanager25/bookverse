@@ -31,7 +31,7 @@ function BookCreateForms() {
     };
 
     const handleImageChange = (event) => {
-        if (event.target.files.lenght){
+        if (event.target.files.length){
             URL.revokeObjectURL(coverImage);
             setBookData({
                 ...bookData,

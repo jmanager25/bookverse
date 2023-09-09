@@ -14,6 +14,15 @@ const Books = () => {
         history.push(`/books/${id}/edit`)
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await axiosReq.delete(`/books/${id}/`);
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -25,6 +34,7 @@ const Books = () => {
         };
         handleMount();
     }, [])
+
   return (
     <Container className={styles.Container}>
         <Row xs={1} md={2} lg={3}>
@@ -38,8 +48,8 @@ const Books = () => {
                         {book.is_owner && (
                             <>
                             <span>
-                                <i onClick={handleEdit} className="fas fa-edit"></i>
-                                <i className="fas fa-trash"></i>
+                                <i onClick={() => handleEdit(book.id)} className="fas fa-edit"></i>
+                                <i onClick={() => handleDelete(book.id)} className="fas fa-trash"></i>
                             </span>
                             </>
                         )}

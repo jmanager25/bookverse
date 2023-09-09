@@ -28,6 +28,7 @@ function BookEditForm() {
         const handleMount = async () => {
             try {
                const {data} = await axiosReq.get(`/books/${id}/`);
+               console.log(data);
                const {title, author, summary, genre, coverImage, is_owner} = data;
 
                is_owner ? setBookData({title, author, summary, genre, coverImage}) : history.push('/');
@@ -47,7 +48,7 @@ function BookEditForm() {
     };
 
     const handleImageChange = (event) => {
-        if (event.target.files.lenght){
+        if (event.target.files.length){
             URL.revokeObjectURL(coverImage);
             setBookData({
                 ...bookData,
