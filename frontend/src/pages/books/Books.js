@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import styles from '../styles/Books.module.css';
-import buttonstyles from '../styles/Button.module.css'
+import styles from '../../styles/Books.module.css';
+import buttonstyles from '../../styles/Button.module.css'
 import {Container, Row, Button, Card} from "react-bootstrap";
-import { axiosReq } from '../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import DeleteConfirmationModal from './DeleteConfirmationModal';
+import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 
 const Books = () => {
     const [books, setBooks] = useState([]);

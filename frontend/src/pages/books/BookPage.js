@@ -4,10 +4,11 @@ import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import styles from '../../styles/BookPage.module.css';
 import buttonstyles from '../../styles/Button.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function BookPage() {
     const { id } = useParams();
-    const [book, setBook] = useState(null);
+    const [book, setBook] = useState({});
 
     useEffect(() => {
         const handleMount = async () => {
@@ -22,29 +23,38 @@ function BookPage() {
         handleMount()
     }, [id])
 
+
   return (
-    <Container>
+    <Container className={styles.Container}>
       {book && (
         <>
           <Row>
-            <Col xs={12} md={4}>
-              <Card>
+            <Col>
+              <Card className={styles.Image}>
                 <img src={book.cover_image} alt={book.title} fluid />
               </Card>
+              <div>Number of Reviews</div>
+              <Link>Review This Book</Link>
             </Col>
             <Col xs={12} md={8}>
-              <Card>
-                <Card.Body>
-                  <Card.Title>
-                    {book.title}
-                    {book.average_rating}
-                  </Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    {book.author}
-                  </Card.Subtitle>
-                  <Card.Text>{book.summary}</Card.Text>
-                </Card.Body>
-              </Card>
+              <div className={styles.BookInfo}>
+                  <div>
+                    <div className={styles.Title}>
+                      {book.title}
+                    </div>
+                    <div className="mb-2 text-muted">
+                      {book.author}
+                    </div>
+                  </div>
+                  <div>
+                    5 star review
+                    <span>Average rating</span>
+                  </div>
+                  <div>
+                    Save book Icon
+                  </div>
+              </div>
+                  <Card.Text className={styles.Summary}>{book.summary}</Card.Text> 
             </Col>
           </Row>
           <Row>

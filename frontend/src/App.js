@@ -7,7 +7,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import './api/axiosDefaults'
 import BookCreateForms from "./pages/books/BookCreateForms";
 import BookPage from "./pages/books/BookPage";
-import Books from "./components/Books";
+import Books from "./pages/books/Books";
 import BookEditForm from "./pages/books/BoookEditForm";
 
 function App() {
