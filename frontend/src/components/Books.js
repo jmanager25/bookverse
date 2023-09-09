@@ -4,25 +4,35 @@ import buttonstyles from '../styles/Button.module.css'
 import {Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const Books = () => {
     const [books, setBooks] = useState([]);
     const history = useHistory();
-
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [selectedBookId, setSelectedBookId] = useState(null);
+    
     const handleEdit = (id) => {
         history.push(`/books/${id}/edit`)
     };
 
-    const handleDelete = async (id) => {
-        try {
-            await axiosReq.delete(`/books/${id}/`);
-            history.goBack();
-        } catch (err) {
-            console.log(err);
+    const openDeleteModal = (id) => {
+        setSelectedBookId(id);
+        setShowDeleteModal(true); 
+      };
+
+    const handleDelete = async () => {
+        if (selectedBookId) {
+            try {
+                await axiosReq.delete(`/books/${selectedBookId}/`);
+                history.push("/");
+            } catch (err) {
+                console.log(err);
+            }
+            setShowDeleteModal(false);
         }
     };
-
+        
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -49,7 +59,7 @@ const Books = () => {
                             <>
                             <span>
                                 <i onClick={() => handleEdit(book.id)} className="fas fa-edit"></i>
-                                <i onClick={() => handleDelete(book.id)} className="fas fa-trash"></i>
+                                <i onClick={() => openDeleteModal(book.id)} className="fas fa-trash"></i>
                             </span>
                             </>
                         )}
@@ -61,6 +71,11 @@ const Books = () => {
                 </Card>
             ))}
         </Row>
+        <DeleteConfirmationModal
+            show={showDeleteModal}
+            handleClose={() => setShowDeleteModal(false)}
+            handleConfirm={handleDelete}
+        />
     </Container>
   )
 }
