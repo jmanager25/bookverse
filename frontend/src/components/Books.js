@@ -3,11 +3,16 @@ import styles from '../styles/Books.module.css';
 import buttonstyles from '../styles/Button.module.css'
 import {Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../api/axiosDefaults';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Books = () => {
     const [books, setBooks] = useState([]);
+    const history = useHistory();
+
+    const handleEdit = (id) => {
+        history.push(`/books/${id}/edit`)
+    };
 
     useEffect(() => {
         const handleMount = async () => {
@@ -30,9 +35,18 @@ const Books = () => {
                     </Link>
                     <Card.Body>
                         <Card.Title className='text-center'>{book.title}</Card.Title>
+                        {book.is_owner && (
+                            <>
+                            <span>
+                                <i onClick={handleEdit} className="fas fa-edit"></i>
+                                <i className="fas fa-trash"></i>
+                            </span>
+                            </>
+                        )}
                         <div className='text-center'>
                             <Button className={buttonstyles.Button}>Save Book</Button>
                         </div>
+
                     </Card.Body>
                 </Card>
             ))}
