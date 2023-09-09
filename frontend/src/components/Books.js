@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/Books.module.css';
 import buttonstyles from '../styles/Button.module.css'
-import {Container, Row, Button, Card, Col} from "react-bootstrap";
+import {Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../api/axiosDefaults';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Books = () => {
@@ -24,7 +25,9 @@ const Books = () => {
         <Row xs={1} md={2} lg={3}>
             {books.map((book) => (
                 <Card key={book.id} className={styles.Card}>
-                    <Card.Img variant='top' src={book.cover_image} alt={book.title} className={styles.CardImage} />
+                    <Link to={`books/${book.id}`} className={styles.Link}>
+                        <Card.Img variant='top' src={book.cover_image} alt={book.title} className={styles.CardImage} />
+                    </Link>
                     <Card.Body>
                         <Card.Title className='text-center'>{book.title}</Card.Title>
                         <div className='text-center'>

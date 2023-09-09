@@ -8,7 +8,7 @@ class Book(models.Model):
     summary = models.TextField()
     author = models.CharField(max_length=50)
     genre = models.CharField(max_length=50)
-    cover_image = models.ImageField(upload_to='images/', blank=True)
+    cover_image = models.ImageField(upload_to='images/', default='../default_book_cover_p9xfbf')
     average_rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
