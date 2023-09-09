@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {Form, Button, Alert} from 'react-bootstrap';
 import styles from '../../styles/BookCreatEditForm.module.css';
 import buttonstyles from '../../styles/Button.module.css';
 import appstyles from "../../App.module.css"
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 
 
-function BookCreateForms() {
+function BookEditForm() {
     const [errors, setErrors] = useState({});
 
     const [bookData, setBookData] = useState({
@@ -22,7 +22,23 @@ function BookCreateForms() {
 
     const imageInput = useRef(null);
     const history = useHistory();
+    const {id} = useParams();
 
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+               const {data} = await axiosReq.get(`/books/${id}/`);
+               const {title, author, summary, genre, coverImage, is_owner} = data;
+
+               is_owner ? setBookData({title, author, summary, genre, coverImage}) : history.push('/');
+            } catch(err){
+              console.log(err)
+            }
+        };
+        handleMount();
+    }, [history, id])
+       
+    
     const handleChange = (event) => {
         setBookData({
             ...bookData, 
@@ -48,11 +64,14 @@ function BookCreateForms() {
         formData.append('author', author);
         formData.append('summary', summary);
         formData.append('genre', genre);
-        formData.append('cover_image', imageInput.current.files[0]);
+
+        if (imageInput?.current?.files[0]) {
+            formData.append('cover_image', imageInput.current.files[0]);
+        }
 
         try {
-          const {data} = await axiosReq.post('/books/', formData);
-          history.push(`/books/${data.id}`)
+          await axiosReq.put(`/books/${id}`, formData);
+          history.push(`/books/${id}`)
         } catch(err){
           console.log(err)
           if (err.response?.status !== 401){
@@ -133,11 +152,11 @@ function BookCreateForms() {
                 Cancel
             </Button>
             <Button className={buttonstyles.Button} type='Submit'>
-                Submit
+                Save
             </Button>
         </div>
     </Form>
   )
 }
 
-export default BookCreateForms
+export default BookEditForm;

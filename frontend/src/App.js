@@ -8,6 +8,7 @@ import './api/axiosDefaults'
 import BookCreateForms from "./pages/books/BookCreateForms";
 import BookPage from "./pages/books/BookPage";
 import Books from "./components/Books";
+import BookEditForm from "./pages/books/BoookEditForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm /> } />
           <Route exact path="/signup" render={() => <SignUpForm /> } />
           <Route exact path="/books/create" render={() => <BookCreateForms /> } />
+          <Route exact path="/books/:id/edit" render={() => <BookEditForm /> } />
           <Route exact path="/books/:id" render={() => <BookPage /> } />
           <Route render={()=><p>404 Page not found</p>} />
         </Switch>
