@@ -108,7 +108,6 @@ function BookCreateForms() {
                 className={styles.FormControl}
                 as='textarea'
                 name='summary'
-                rows={6}
                 value={summary}
                 onChange={handleChange}
             />
