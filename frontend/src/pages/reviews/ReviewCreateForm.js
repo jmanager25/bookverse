@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Container } from 'react-bootstrap';
 import styles from '../../styles/ReviewCreateEditForm.module.css'
 import buttonstyles from '../../styles/Button.module.css'
+import StarRating from '../../components/StarRating';
 
 function ReviewCreateForm() {
   return (
@@ -12,6 +13,7 @@ function ReviewCreateForm() {
                 className={styles.TextArea}
                 placeholder='Write your review here...'
             />
+            <StarRating />
             <Button className={buttonstyles.Button} type='submit'>Submit</Button>
         </form>
     </Container>

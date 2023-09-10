@@ -5,6 +5,7 @@ import styles from '../../styles/BookPage.module.css';
 import buttonstyles from '../../styles/Button.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import ReviewBookButton from '../../components/ReviewBookButton';
 
 function BookPage() {
     const { id } = useParams();
@@ -34,7 +35,7 @@ function BookPage() {
                 <img src={book.cover_image} alt={book.title} fluid />
               </Card>
               <div>Number of Reviews</div>
-              <Link to="/reviews/create">Review This Book</Link>
+              <ReviewBookButton bookId={book.id} />
             </Col>
             <Col xs={12} md={8}>
               <div className={styles.BookInfo}>

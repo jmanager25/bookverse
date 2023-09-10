@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/books/create" render={() => <BookCreateForms /> } />
           <Route exact path="/books/:id/edit" render={() => <BookEditForm /> } />
           <Route exact path="/books/:id" render={() => <BookPage /> } />
-          <Route exact path="/reviews/create" render={() => <ReviewCreateForm /> } />
+          <Route exact path="/reviews/book/:id" render={() => <ReviewCreateForm /> } />
           <Route render={()=><p>404 Page not found</p>} />
         </Switch>
       </Container>
