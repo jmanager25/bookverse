@@ -6,6 +6,7 @@ import buttonstyles from '../../styles/Button.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import ReviewBookButton from '../../components/ReviewBookButton';
+import Review from '../reviews/Review';
 
 function BookPage() {
     const { id } = useParams();
@@ -62,7 +63,7 @@ function BookPage() {
 
           </Row>
           <Row>
-
+              <Review />
           </Row>
         </>
       )}
