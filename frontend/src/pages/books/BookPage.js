@@ -34,7 +34,7 @@ function BookPage() {
                 <img src={book.cover_image} alt={book.title} fluid />
               </Card>
               <div>Number of Reviews</div>
-              <Link>Review This Book</Link>
+              <Link to="/reviews/create">Review This Book</Link>
             </Col>
             <Col xs={12} md={8}>
               <div className={styles.BookInfo}>
