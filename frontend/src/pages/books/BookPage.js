@@ -45,7 +45,7 @@ function BookPage() {
                       {book.title}
                     </div>
                     <div className="mb-2 text-muted">
-                      {book.author}
+                      by {book.author}
                     </div>
                   </div>
                   <div>
