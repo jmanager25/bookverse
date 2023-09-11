@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Books.module.css';
 import buttonstyles from '../../styles/Button.module.css'
-import {Container, Row, Button, Card} from "react-bootstrap";
+import {Container, Row, Button, Card, Col} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
@@ -47,28 +47,30 @@ const Books = () => {
 
   return (
     <Container className={styles.Container}>
-        <Row xs={1} md={2} lg={3}>
+        <Row xs={1} md={3} lg={4}>
             {books.map((book) => (
-                <Card key={book.id} className={styles.Card}>
-                    <Link to={`books/${book.id}`} className={styles.Link}>
-                        <Card.Img variant='top' src={book.cover_image} alt={book.title} className={styles.CardImage} />
-                    </Link>
-                    <Card.Body>
-                        <Card.Title className='text-center'>{book.title}</Card.Title>
+                <div className={styles.BookContainer}>
+                    <Card key={book.id} className={styles.Card}>
+                        <Link to={`books/${book.id}`} className={styles.Link}>
+                            <Card.Img variant='top' src={book.cover_image} alt={book.title} className={styles.CardImage} />
+                        </Link>
+                    </Card>
+                    <div className={styles.Title}>{book.title}</div>
+                    <div className={styles.Author}> by {book.author}</div>
+                    <div className={styles.CardBody}>
                         {book.is_owner && (
                             <>
-                            <span>
-                                <i onClick={() => handleEdit(book.id)} className="fas fa-edit"></i>
-                                <i onClick={() => openDeleteModal(book.id)} className="fas fa-trash"></i>
-                            </span>
+                                <div className={styles.Icons}>
+                                    <i onClick={() => handleEdit(book.id)} className="fas fa-edit"></i>
+                                    <i onClick={() => openDeleteModal(book.id)} className="fas fa-trash"></i>
+                                </div>
                             </>
-                        )}
+                            )}
                         <div className='text-center'>
-                            <Button className={buttonstyles.Button}>Save Book</Button>
+                                <Button className={buttonstyles.Button}>Save Book</Button>
                         </div>
-
-                    </Card.Body>
-                </Card>
+                    </div>
+                </div>
             ))}
         </Row>
         <DeleteConfirmationModal
